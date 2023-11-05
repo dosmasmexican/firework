@@ -1,16 +1,28 @@
 let fireworks = [];
+let systems = [];
 
 function setup() {
   createCanvas(400, 600);
+
+  gravity = createVector(0,0.2)
 }
 
 function draw() {
   background(51);
-  let gravity = createVector(0,0.2)
   for(let firework of fireworks){
   firework.applyForce(gravity);
   firework.update();
   firework.show();
+  if(firework.vel.y==0){
+  let mpos = createVector(firework.pos.x, firework.pos.y);
+  let s = new ParticleSystem(mpos);
+  systems.push(s);
+  for(let s of systems){
+  s.addParticle();
+  s.add(gravity);
+  s.run();
+}  
+}
 }
 }
 
