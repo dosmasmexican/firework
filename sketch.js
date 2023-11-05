@@ -13,7 +13,7 @@ function draw() {
   firework.applyForce(gravity);
   firework.update();
   firework.show();
-  if(abs(firework.vel.y)<1){
+  if(abs(firework.vel.y)<3){
   let mpos = createVector(firework.pos.x, firework.pos.y);
   let s = new ParticleSystem(mpos);
   systems.push(s);
@@ -22,6 +22,10 @@ function draw() {
   s.add(gravity);
   s.run();
 }  
+}
+if(firework.pos.y>height){
+  fireworks.splice(0,fireworks.length);
+  systems.splice(0,systems.length);
 }
 }
 }
