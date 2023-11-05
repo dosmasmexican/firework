@@ -10,6 +10,7 @@ class Particle {
   this.update();
   this.display();
   }
+  
   applyForce(force){
     this.acceleration.add(force);
   }
